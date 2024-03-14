@@ -1,0 +1,78 @@
+<div
+  class="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02"
+>
+  <!-- logo -->
+  <h1 class="w-3/12">
+    <a href="">
+      <img
+        src="../assets/images/main-logo.jpg"
+        class="h-20 w-32 hover:text-green-500 duration-200 Class Properties shadow-md"
+      />
+    </a>
+  </h1>
+
+  <!-- hamburger button -->
+  <div class="block lg:hidden" (click)="ToggleMenu()">
+    <button id="toggleButton" class="focus:outline-none">
+      <svg
+        class="h-8 p-1 hover:text-green-500 duration-200"
+        aria-hidden="true"
+        focusable="false"
+        data-prefix="fas"
+        data-icon="bars"
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+      >
+        <path
+          fill="currentColor"
+          d="M16 132h416c8.8 0 16-7.2 16-16V76c0-8.8-7.2-16-16-16H16C7.2 60 0 67.2 0 76v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- navigation -->
+  <nav class="nav font-semibold text-lg lg:flex hidden">
+    <ul class="flex items-center">
+      <li
+        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active"
+      >
+        <a href="">Accueil</a>
+      </li>
+      <li
+        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer"
+      >
+        <a href="">Produits</a>
+      </li>
+      <li
+        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer"
+      >
+        <a href="">Collections</a>
+      </li>
+      <li
+        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer"
+      >
+        <a href="">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Mobile navigation -->
+<div class="h-20 w-40 block lg:hidden" id="menu-mobile">
+  <ul class="flex items-center flex-col">
+    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
+      <a href="">Accueil</a>
+    </li>
+    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
+      <a href="">Produits</a>
+    </li>
+    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
+      <a href="">Collections</a>
+    </li>
+    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
+      <a href="">Contact</a>
+    </li>
+  </ul>
+</div>
