@@ -2,10 +2,10 @@
   class="header sticky top-0 bg-orange-100 shadow-md flex items-center justify-between px-8 py-02"
 >
   <!-- logo -->
-  <a href="">
+  <a routerLink="/">
     <img
       src="../assets/images/main-logo.jpg"
-      class="h-20 w-32 Class Properties shadow-sm"
+      class="h-20 w-32 Class Properties cursor-pointer rounded-lg m-1"
     />
   </a>
 
@@ -34,52 +34,55 @@
   <nav class="nav text-purple-950 text-lg lg:flex hidden">
     <ul class="flex items-center">
       <li
-        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer active"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:text-purple-500 duration-200 cursor-pointer active"
       >
-        <a href="">Accueil</a>
+        <a routerLink="/">Categories</a>
       </li>
       <li
-        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:text-purple-500 duration-200 cursor-pointer"
       >
-        <a href="">Produits</a>
+        <a routerLink="/">Products</a>
       </li>
       <li
-        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:text-purple-500 duration-200 cursor-pointer"
       >
-        <a href="">Collections</a>
+        <a routerLink="/">Collections</a>
       </li>
       <li
-        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:text-purple-500 duration-200 cursor-pointer"
       >
-        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+        <a routerLink="/"><i class="fa-solid fa-cart-shopping"></i></a>
       </li>
     </ul>
   </nav>
 </div>
 
 <!-- Mobile navigation -->
-<div class="md:hidden">
-  <div class="h-20 hidden w-full text-purple-950" id="menu-mobile">
+<div class="lg:hidden">
+  <div
+    class="h-auto hidden w-full text-purple-950 absolute z-auto"
+    id="menu-mobile"
+  >
     <ul class="flex w-full items-center flex-col">
       <li
-        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
       >
-        <a>Categories</a>
+        <a routerLink="/">Categories</a>
       </li>
       <li
-        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
       >
-        <a>Products</a>
+        <a routerLink="/">Products</a>
       </li>
       <li
-        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
       >
-        <a>Collections</a>
+        <a routerLink="/">Collections</a>
       </li>
       <li
-        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
       >
-        <a><i class="fa-solid fa-cart-shopping"></i></a>
+        <a routerLink="/"><i class="fa-solid fa-cart-shopping"></i></a>
       </li>
     </ul>
   </div>
