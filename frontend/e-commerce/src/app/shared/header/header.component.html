@@ -1,21 +1,19 @@
 <div
-  class="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02"
+  class="header sticky top-0 bg-orange-100 shadow-md flex items-center justify-between px-8 py-02"
 >
   <!-- logo -->
-  <h1 class="w-3/12">
-    <a href="">
-      <img
-        src="../assets/images/main-logo.jpg"
-        class="h-20 w-32 hover:text-green-500 duration-200 Class Properties shadow-md"
-      />
-    </a>
-  </h1>
+  <a href="">
+    <img
+      src="../assets/images/main-logo.jpg"
+      class="h-20 w-32 Class Properties shadow-sm"
+    />
+  </a>
 
   <!-- hamburger button -->
   <div class="block lg:hidden" (click)="ToggleMenu()">
     <button id="toggleButton" class="focus:outline-none">
       <svg
-        class="h-8 p-1 hover:text-green-500 duration-200"
+        class="h-8 p-1 hover:text-purple-500 duration-200"
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
@@ -33,46 +31,56 @@
   </div>
 
   <!-- navigation -->
-  <nav class="nav font-semibold text-lg lg:flex hidden">
+  <nav class="nav text-purple-950 text-lg lg:flex hidden">
     <ul class="flex items-center">
       <li
-        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer active"
       >
         <a href="">Accueil</a>
       </li>
       <li
-        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer"
       >
         <a href="">Produits</a>
       </li>
       <li
-        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer"
       >
         <a href="">Collections</a>
       </li>
       <li
-        class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer"
+        class="p-4 border-b-2 border-purple-200 border-opacity-0 hover:border-opacity-100 hover:text-purple-500 duration-200 cursor-pointer"
       >
-        <a href="">Contact</a>
+        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
       </li>
     </ul>
   </nav>
 </div>
 
 <!-- Mobile navigation -->
-<div class="h-20 w-40 block lg:hidden" id="menu-mobile">
-  <ul class="flex items-center flex-col">
-    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
-      <a href="">Accueil</a>
-    </li>
-    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
-      <a href="">Produits</a>
-    </li>
-    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
-      <a href="">Collections</a>
-    </li>
-    <li class="p-4 cursor-pointer hover:bg-gray-100 hover:text-purple-400">
-      <a href="">Contact</a>
-    </li>
-  </ul>
+<div class="md:hidden">
+  <div class="h-20 hidden w-full text-purple-950" id="menu-mobile">
+    <ul class="flex w-full items-center flex-col">
+      <li
+        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+      >
+        <a>Categories</a>
+      </li>
+      <li
+        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+      >
+        <a>Products</a>
+      </li>
+      <li
+        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+      >
+        <a>Collections</a>
+      </li>
+      <li
+        class="w-full p-4 cursor-pointer hover:bg-gray-50 hover:text-purple-500 duration-200"
+      >
+        <a><i class="fa-solid fa-cart-shopping"></i></a>
+      </li>
+    </ul>
+  </div>
 </div>
