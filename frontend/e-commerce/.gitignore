@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# privates files (API keys, etc)
+/src/app/private.ts
+
 # Compiled output
 /dist
 /tmp
