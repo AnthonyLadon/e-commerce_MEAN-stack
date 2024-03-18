@@ -1,7 +1,9 @@
-<h1>Produits</h1>
-<a class="">
-  <div class="">
-    <img [src]="" [alt]="" />
+<a class="" *ngIf="product$ | async as product">
+  {{ product.title }}
+  {{ product.price | currency }}
+  {{ product.category.name }}
+  <div class="" *ngFor="let image of product.images">
+    <img [src]="[image]" [alt]="[product.title]" />
   </div>
   <p class=""></p>
 </a>
