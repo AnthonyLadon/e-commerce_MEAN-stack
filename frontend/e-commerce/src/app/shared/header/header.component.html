@@ -1,5 +1,5 @@
 <div
-  class="header sticky top-0 bg-sable-100 shadow-md shadow-gray-150 flex items-center justify-between px-8 py-02"
+  class="header sticky top-0 bg-transparent flex items-center justify-between px-8 py-02"
 >
   <!-- logo -->
   <a routerLink="/">
@@ -13,7 +13,7 @@
   <div class="block lg:hidden" (click)="ToggleMenu()">
     <button id="toggleButton" class="focus:outline-none">
       <svg
-        class="h-8 p-1 hover:text-purple-500 duration-200"
+        class="h-8 p-1 text-amber-800 active:text-amber-500 duration-100"
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
@@ -29,27 +29,34 @@
       </svg>
     </button>
   </div>
+  <!-- End: hamburger button -->
 
   <!-- navigation -->
-  <nav class="nav text-purple-950 text-lg lg:flex hidden">
+  <nav class="nav uppercase lg:flex hidden">
     <ul class="flex items-center">
       <li
-        class="p-4 text-xl border-transparent border-b-2 text-ambre-300 border-opacity-0 hover:text-ambre-500 hover:border-b-2 hover:border-ambre-500 duration-200 cursor-pointer active"
+        class="p-4 border-transparent border-b-2 text-ambre-200 border-opacity-0 hover:text-ambre-400 hover:border-b-2 hover:border-ambre-200 duration-200 cursor-pointer"
       >
         <a routerLink="/">Categories</a>
       </li>
       <li
-        class="p-4 text-xl border-transparent border-b-2 text-ambre-300 border-opacity-0 hover:text-ambre-500 hover:border-b-2 hover:border-ambre-500 duration-200 cursor-pointer active"
+        class="p-4 border-transparent border-b-2 text-ambre-200 border-opacity-0 hover:text-ambre-400 hover:border-b-2 hover:border-ambre-200 duration-200 cursor-pointer"
       >
         <a routerLink="/">Products</a>
       </li>
       <li
-        class="p-4 text-xl border-transparent border-b-2 text-ambre-300 border-opacity-0 hover:text-ambre-500 hover:border-b-2 hover:border-ambre-500 duration-200 cursor-pointer active"
+        class="p-4 border-transparent border-b-2 text-ambre-200 border-opacity-0 hover:text-ambre-400 hover:border-b-2 hover:border-ambre-200 duration-200 cursor-pointer"
       >
         <a routerLink="/">Collections</a>
       </li>
+
       <li
-        class="p-4 text-xl border-transparent border-b-2 text-ambre-300 border-opacity-0 hover:text-ambre-500 hover:border-b-2 hover:border-ambre-500 duration-200 cursor-pointer active"
+        class="p-4 border-transparent border-b-2 text-ambre-200 border-opacity-0 hover:text-ambre-400 hover:border-b-2 hover:border-ambre-200 duration-200 cursor-pointer"
+      >
+        <a routerLink="/"><i class="fa-solid fa-user"></i></a>
+      </li>
+      <li
+        class="p-4 border-transparent border-b-2 text-ambre-200 border-opacity-0 hover:text-ambre-400 hover:border-b-2 hover:border-ambre-200 duration-200 cursor-pointer"
       >
         <a routerLink="/"><i class="fa-solid fa-cart-shopping"></i></a>
       </li>
@@ -60,30 +67,31 @@
 <!-- Mobile navigation -->
 <div class="lg:hidden">
   <div
-    class="h-auto hidden w-full text-purple-950 absolute z-auto"
+    class="h-auto hidden uppercase w-full text-purple-950 absolute z-auto"
     id="menu-mobile"
   >
     <ul class="flex w-full items-center flex-col">
       <li
-        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 bg-sable-50 hover:bg-sable-100 text-ocean-400 border-opacity-0 cursor-pointer active duration-100"
       >
         <a routerLink="/">Categories</a>
       </li>
       <li
-        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 bg-sable-50 hover:bg-sable-100 text-ocean-400 border-opacity-0 cursor-pointer active duration-100"
       >
         <a routerLink="/">Products</a>
       </li>
       <li
-        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 bg-sable-50 hover:bg-sable-100 text-ocean-400 border-opacity-0 cursor-pointer active duration-100"
       >
         <a routerLink="/">Collections</a>
       </li>
       <li
-        class="w-full p-4 cursor-pointer bg-orange-50 hover:bg-stone-50 hover:text-purple-500 duration-200"
+        class="w-full p-4 bg-sable-50 hover:bg-sable-100 text-ocean-400 border-opacity-0 cursor-pointer active duration-100"
       >
         <a routerLink="/"><i class="fa-solid fa-cart-shopping"></i></a>
       </li>
     </ul>
   </div>
+  <!-- End: Mobile navigation -->
 </div>
