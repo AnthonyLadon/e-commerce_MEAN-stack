@@ -1,0 +1,52 @@
+<ng-container *ngIf="product$ | async as products">
+  <div *ngFor="let product of products">
+    <div class="flex justify-center my-10 mx-3 md:mx-20 lg:my-20">
+      <div class="card lg:card-side bg-base-100 shadow-xl">
+        <figure class="w-auto">
+          <div class="carousel w-full">
+            <ng-container *ngIf="product.images">
+              <div
+                class="carousel-item relative w-full"
+                *ngFor="let img of product.images; let i = index"
+              >
+                <!-- ! Adding (product.title) to give unique id to the slide (to avoid interfing with other carrousel) -->
+                <div
+                  [id]="'slide' + product.title + (i + 1)"
+                  class="carousel-item relative w-full"
+                >
+                  <img [src]="img" [alt]="product.title" class="w-full" />
+                  <div
+                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                  >
+                    <a
+                      [href]="'#slide' + product.title + i"
+                      class="btn btn-circle"
+                      >❮</a
+                    >
+                    <a
+                      [href]="'#slide' + product.title + (i + 2)"
+                      class="btn btn-circle"
+                      >❯</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </figure>
+        <div class="card-body bg-ocean-100">
+          <h2 class="card-title text-amber-800 text-3xl">
+            {{ product.title }}
+          </h2>
+          <p class="mt-6">{{ product.description }}</p>
+          <p class="m-2 text-center text-2xl text-amber-800">
+            {{ product.price | currency }}
+          </p>
+          <div class="card-actions justify-center align-middle">
+            <button class="btn btn-wide mt-2">See more</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
