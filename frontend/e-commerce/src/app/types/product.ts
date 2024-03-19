@@ -14,10 +14,3 @@ export type Product = {
   };
   images: string[];
 };
-
-export type ProductDataTypeObject = {
-  page: number;
-  results: Product[];
-  total_pages: number;
-  total_results: number;
-};

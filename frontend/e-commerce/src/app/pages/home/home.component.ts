@@ -13,11 +13,12 @@ import { CommonModule } from "@angular/common";
   styleUrl: "./home.component.css",
 })
 export class HomeComponent implements OnInit {
-  product$: Observable<Product> | null = null;
+  product$: Observable<Product[]> | null = null;
 
   constructor(private productService: ProductService) {}
 
+  // fetch all products (max products in parameter)
   ngOnInit() {
-    this.product$ = this.productService.getProduct();
+    this.product$ = this.productService.getProducts(3);
   }
 }
