@@ -1,11 +1,31 @@
-<a class="" *ngIf="product$ | async as products">
+<ng-container *ngIf="product$ | async as products">
   <div *ngFor="let product of products">
-    {{ product.title }}
-    {{ product.price | currency }}
-    {{ product.category.name }}
-    <div class="" *ngFor="let image of product.images">
-      <img [src]="[image]" [alt]="[product.title]" />
+    <div class="flex justify-center">
+      <div class="card lg:card-side bg-base-100 shadow-xl">
+        <figure>
+          <ng-container *ngIf="product.images[0]; then image; else noImage">
+          </ng-container>
+          <ng-template #image>
+            <img [src]="[product.images[0]]" [alt]="[product.title]" />
+          </ng-template>
+          <ng-template #noImage>
+            <img src="" [alt]="[product.title]" />
+            <!-- TODO Ajouter le chemin vers image par defaut si pas d'image trouvée ! -->
+          </ng-template>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title text-amber-800 text-3xl">
+            {{ product.title }}
+          </h2>
+          <p class="mt-6">{{ product.description }}</p>
+          <p class="m-2 text-center text-amber-600">
+            {{ product.price | currency }}
+          </p>
+          <div class="card-actions justify-center align-middle">
+            <button class="btn btn-wide btn-gray mt-2">See more</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <p class=""></p>
-</a>
+</ng-container>

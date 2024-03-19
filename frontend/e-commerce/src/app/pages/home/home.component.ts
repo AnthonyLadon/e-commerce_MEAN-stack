@@ -19,6 +19,6 @@ export class HomeComponent implements OnInit {
 
   // fetch all products (max products in parameter)
   ngOnInit() {
-    this.product$ = this.productService.getProducts(3);
+    this.product$ = this.productService.getProducts(5);
   }
 }
