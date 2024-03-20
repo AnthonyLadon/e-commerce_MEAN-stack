@@ -1,7 +1,9 @@
 <ng-container *ngIf="product$ | async as products">
   <div *ngFor="let product of products">
-    <div class="flex justify-center my-10 mx-3 md:mx-20 lg:my-20">
-      <div class="card lg:card-side bg-base-100 shadow-xl">
+    <div class="flex justify-center my-8 md:mx-20 lg:my-20">
+      <div
+        class="card rounded-none md:rounded-xl lg:card-side bg-base-100 shadow-xl"
+      >
         <figure class="w-auto">
           <div class="carousel w-full">
             <ng-container *ngIf="product.images">
@@ -23,8 +25,7 @@
                       class="btn btn-circle"
                       >❮</a
                     >
-                    <!-- ! If last slide is reached -->
-                    template #goToFirstSlide is displayed -->
+                    <!-- ! If last slide is reached template #goToFirstSlide is displayed -->
                     <a
                       *ngIf="i < product.images.length - 1; else goToFirstSlide"
                       [href]="'#slide' + product.title + (i + 2)"
@@ -44,16 +45,19 @@
             </ng-container>
           </div>
         </figure>
-        <div class="card-body bg-ocean-100">
+        <div
+          class="card-body rounded-none md:rounded-b-xl lg:rounded-l-none lg:rounded-r-xl bg-ocean-100"
+        >
           <h2 class="card-title text-amber-800 text-3xl">
             {{ product.title }}
           </h2>
-          <p class="mt-6">{{ product.description }}</p>
-          <p class="m-2 text-center text-2xl text-amber-800">
-            {{ product.price | currency }}
-          </p>
-          <div class="card-actions justify-center align-middle">
-            <button class="btn btn-wide mt-2">See more</button>
+          <p class="mb-10 line-clamp-3">{{ product.description }}</p>
+
+          <div class="card-actions align-middle justify-between">
+            <p class="mt-2 text-left text-2xl text-amber-800">
+              {{ product.price | currency }}
+            </p>
+            <button class="btn">See more</button>
           </div>
         </div>
       </div>
