@@ -23,11 +23,21 @@
                       class="btn btn-circle"
                       >❮</a
                     >
+                    <!-- ! If last slide is reached -->
+                    template #goToFirstSlide is displayed -->
                     <a
+                      *ngIf="i < product.images.length - 1; else goToFirstSlide"
                       [href]="'#slide' + product.title + (i + 2)"
                       class="btn btn-circle"
                       >❯</a
                     >
+                    <ng-template #goToFirstSlide>
+                      <a
+                        [href]="'#slide' + product.title + 1"
+                        class="btn btn-circle"
+                        >❯</a
+                      >
+                    </ng-template>
                   </div>
                 </div>
               </div>
