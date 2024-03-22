@@ -2,8 +2,9 @@ import { Component, input } from "@angular/core";
 import { ProductService } from "../../services/product.service";
 import { Product } from "../../types/product";
 import { OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 import { CommonModule } from "@angular/common";
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 
 @Component({
   selector: "app-product-list",
@@ -15,7 +16,10 @@ import { CommonModule } from "@angular/common";
 export class ProductListComponent implements OnInit {
   product$: Observable<Product[]> | null = null;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private domSanitizer: DomSanitizer
+  ) {}
 
   // fetch all products (max products in parameter)
   ngOnInit() {

@@ -5,6 +5,7 @@ export type Product = {
   description: string;
   creationAt: Date;
   updatedAt: Date;
+  images: string[];
   category: {
     id: number;
     name: string;
@@ -12,5 +13,4 @@ export type Product = {
     creationAt: Date;
     updatedAt: Date;
   };
-  images: string[];
 };
