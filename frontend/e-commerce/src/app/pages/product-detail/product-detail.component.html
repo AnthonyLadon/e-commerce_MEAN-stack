@@ -1,0 +1,12 @@
+<div *ngIf="product">
+  <ng-container *ngIf="product.images">
+    <h1>{{ product.title }}</h1>
+    <p>Category: {{ product.category.name }}</p>
+    <p>{{ product.description }}</p>
+    <p>Added on {{ product.creationAt | date }}</p>
+    <p>{{ product.price | currency }}</p>
+    <div *ngFor="let img of product.images" class="wrapper">
+      <img [src]="img" [alt]="product.title" class="w-full" />
+    </div>
+  </ng-container>
+</div>

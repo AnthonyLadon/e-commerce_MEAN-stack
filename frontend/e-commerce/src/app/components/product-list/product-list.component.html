@@ -1,48 +1,12 @@
 <ng-container *ngIf="product$ | async as products">
-  <div *ngFor="let product of products">
-    <div class="flex justify-center mb-12 md:mx-20 lg:mb-15">
+  <div *ngFor="let product of products" class="flex-auto">
+    <div class="justify-center mb-12 md:mx-20 lg:mb-15">
       <div
         class="card rounded-none md:rounded-xl lg:card-side bg-base-100 shadow-xl"
       >
         <figure class="w-auto">
           <div class="carousel w-full">
-            <ng-container *ngIf="product.images">
-              <div
-                class="carousel-item relative w-full"
-                *ngFor="let img of product.images; let i = index"
-              >
-                <!-- ! Adding (product.title) to give unique id to the slide (to avoid interfing with other carrousel) -->
-                <div
-                  [id]="'slide' + product.title + (i + 1)"
-                  class="carousel-item relative w-full"
-                >
-                  <img [src]="img" [alt]="product.title" class="w-full" />
-                  <div
-                    class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-                  >
-                    <a
-                      [href]="'#slide' + product.title + i"
-                      class="btn btn-circle"
-                      >❮</a
-                    >
-                    <!-- ! If last slide is reached template #goToFirstSlide is displayed -->
-                    <a
-                      *ngIf="i < product.images.length - 1; else goToFirstSlide"
-                      [href]="'#slide' + product.title + (i + 2)"
-                      class="btn btn-circle"
-                      >❯</a
-                    >
-                    <ng-template #goToFirstSlide>
-                      <a
-                        [href]="'#slide' + product.title + 1"
-                        class="btn btn-circle"
-                        >❯</a
-                      >
-                    </ng-template>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
+            <img [src]="product.images[0]" alt="{{ product.title }}" />
           </div>
         </figure>
         <div
@@ -57,7 +21,13 @@
             <p class="mt-2 text-left text-2xl text-amber-700">
               {{ product.price | currency }}
             </p>
-            <button class="btn">See more</button>
+            <button
+              [routerLink]="'/product' + '/' + product.id"
+              routerLinkActive="router-link-active"
+              class="btn"
+            >
+              See more
+            </button>
           </div>
         </div>
       </div>

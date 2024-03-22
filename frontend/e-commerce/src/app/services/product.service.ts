@@ -16,4 +16,8 @@ export class ProductService {
       .get<Product[]>(`${this.apiUrl}/products`)
       .pipe(map((data) => data.slice(0, count)));
   }
+
+  getProductById(id: number) {
+    return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
+  }
 }
