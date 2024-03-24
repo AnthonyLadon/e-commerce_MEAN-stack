@@ -10,7 +10,7 @@ export class ProductService {
   private apiUrl = "https://api.escuelajs.co/api/v1";
   constructor(private http: HttpClient) {}
 
-  // Fetch all products from the API and return 10 products by default
+  // Fetch all products and return 10 products by default
   getProducts(count = 10) {
     return this.http
       .get<Product[]>(`${this.apiUrl}/products`)
@@ -19,5 +19,15 @@ export class ProductService {
 
   getProductById(id: number) {
     return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
+  }
+
+  getCategories() {
+    return this.http.get(`${this.apiUrl}/categories`);
+  }
+
+  getProductsByCategory(categoryId: string) {
+    return this.http.get<Product[]>(
+      `${this.apiUrl}/categories/${categoryId}/products`
+    );
   }
 }

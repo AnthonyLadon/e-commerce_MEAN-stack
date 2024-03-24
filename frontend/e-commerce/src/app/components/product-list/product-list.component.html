@@ -10,23 +10,23 @@
           </div>
         </figure>
         <div
-          class="card-body rounded-none md:rounded-b-xl lg:rounded-l-none lg:rounded-r-xl bg-ocean-50"
+          class="card-body rounded-none md:rounded-b-xl lg:rounded-l-none lg:rounded-r-xl"
         >
-          <h2 class="card-title text-amber-900 text-3xl">
+          <h2 class="card-title text-primary text-3xl">
             {{ product.title }}
           </h2>
-          <p class="line-clamp-3 lg:line-clamp-none">
+          <p class="line-clamp-3 lg:line-clamp-none text-primary">
             {{ product.description }}
           </p>
 
           <div class="card-actions align-middle justify-between">
-            <p class="mt-2 text-left text-2xl text-amber-700">
+            <p class="mt-2 text-left text-2xl text-info">
               {{ product.price | currency }}
             </p>
             <button
               [routerLink]="'/product' + '/' + product.id"
               routerLinkActive="router-link-active"
-              class="btn"
+              class="btn btn-outline"
             >
               See more
             </button>
