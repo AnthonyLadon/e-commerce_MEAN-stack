@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Product } from "../types/product";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import e from "express";
 
 @Injectable({
   providedIn: "root",
@@ -10,11 +11,15 @@ export class ProductService {
   private apiUrl = "https://api.escuelajs.co/api/v1";
   constructor(private http: HttpClient) {}
 
-  // Fetch all products and return 10 products by default
-  getProducts(count = 10) {
-    return this.http
-      .get<Product[]>(`${this.apiUrl}/products`)
-      .pipe(map((data) => data.slice(0, count)));
+  // Fetch all products by default => else fetch the number of products specified
+  getProducts(count: number = 0) {
+    if (count > 0) {
+      return this.http
+        .get<Product[]>(`${this.apiUrl}/products`)
+        .pipe(map((data) => data.slice(0, count)));
+    } else {
+      return this.http.get<Product[]>(`${this.apiUrl}/products`);
+    }
   }
 
   getProductById(id: number) {

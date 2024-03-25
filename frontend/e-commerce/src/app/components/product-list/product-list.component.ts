@@ -20,6 +20,6 @@ export class ProductListComponent implements OnInit {
 
   // fetch all products (param = nb of products displayed)
   ngOnInit() {
-    this.product$ = this.productService.getProducts(5);
+    this.product$ = this.productService.getProducts(10);
   }
 }

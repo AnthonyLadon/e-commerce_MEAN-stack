@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
-import { ProductListComponent } from "../../components/product-list/product-list.component";
 import { BannerComponent } from "../../components/banner/banner.component";
+import { ProductSliderComponent } from "../../components/product-slider/product-slider.component";
 
 @Component({
   selector: "app-home",
   standalone: true,
-  imports: [ProductListComponent, BannerComponent],
+  imports: [BannerComponent, ProductSliderComponent],
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
 })

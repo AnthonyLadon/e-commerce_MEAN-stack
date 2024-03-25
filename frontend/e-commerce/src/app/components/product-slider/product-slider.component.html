@@ -1,0 +1,12 @@
+<ng-container *ngIf="product$ | async as products">
+  <div *ngFor="let product of products" class="flex-auto">
+    <!-- TODO Créer un slider ici avec les images + titre et prix par dessus -->
+    <figure class="w-auto">
+      <div class="carousel w-full">
+        <span>{{ product.title }}</span>
+        <span>{{ product.price | currency }}</span>
+        <img [src]="product.images[0]" alt="{{ product.title }}" />
+      </div>
+    </figure>
+  </div>
+</ng-container>
