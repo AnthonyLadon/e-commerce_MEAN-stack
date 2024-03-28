@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { BannerComponent } from "../../components/banner/banner.component";
 import { ProductSliderComponent } from "../../components/product-slider/product-slider.component";
 
@@ -9,4 +9,6 @@ import { ProductSliderComponent } from "../../components/product-slider/product-
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
 })
-export class HomeComponent {}
+export class HomeComponent {
+  @Input() scrollSpeed: number = 6000; // Scroll speed of the carousel
+}

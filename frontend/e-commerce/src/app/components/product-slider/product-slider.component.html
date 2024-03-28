@@ -1,11 +1,12 @@
-<h2 class="text-center p-4 text-2xl">Recently added</h2>
+<h2 class="text-center p-4 text-2xl">New Arrivals</h2>
 <div
+  #carousel
   class="carousel p-4 space-x-4 rounded-box h-96"
   *ngIf="product$ | async as products"
 >
   <ng-container *ngFor="let product of products">
     <div
-      class="carousel-item relative bg-gradient-to-tr from-secondary to-white"
+      class="carousel-item relative rounded-xl bg-gradient-to-tr from-secondary to-white"
     >
       <div class="carousel-text-over text-amber-50">
         <span class="">{{ product.price | currency }}</span>
@@ -17,7 +18,11 @@
           See more
         </span>
       </div>
-      <img [src]="product.images[0]" alt="{{ product.title }}" />
+      <img
+        [src]="product.images[0]"
+        class="rounded-xl"
+        alt="{{ product.title }}"
+      />
     </div>
   </ng-container>
 </div>

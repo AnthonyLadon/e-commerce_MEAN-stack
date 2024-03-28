@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import { Product } from "../types/product";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import e from "express";
+import { apiUrlBase } from "../private";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProductService {
-  private apiUrl = "https://api.escuelajs.co/api/v1";
+  private apiUrl = apiUrlBase;
   constructor(private http: HttpClient) {}
 
   // Fetch all products by default => else fetch the number of products specified
