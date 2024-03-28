@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { ProductService } from "../../services/product.service";
 import { Product } from "../../types/product";
@@ -15,11 +15,12 @@ import { CommonModule } from "@angular/common";
 })
 export class ProductListComponent implements OnInit {
   product$: Observable<Product[]> | null = null;
+  @Input() TotalProductsFetched: number;
 
   constructor(private productService: ProductService) {}
 
   // fetch all products (param = nb of products displayed)
   ngOnInit() {
-    this.product$ = this.productService.getProducts(10);
+    this.product$ = this.productService.getProducts(this.TotalProductsFetched);
   }
 }

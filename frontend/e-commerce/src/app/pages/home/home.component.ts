@@ -11,4 +11,5 @@ import { ProductSliderComponent } from "../../components/product-slider/product-
 })
 export class HomeComponent {
   @Input() scrollSpeed: number = 6000; // Scroll speed of the carousel
+  @Input() TotalProductsFetched: number; // Total products fetched
 }

@@ -1,7 +1,7 @@
-<h2 class="text-center p-4 text-2xl">New Arrivals</h2>
+<h2 class="text-center p-4 text-2xl">Last Arrivals</h2>
 <div
   #carousel
-  class="carousel p-4 space-x-4 rounded-box h-96"
+  class="carousel p-4 mx-2 space-x-4 rounded-box h-96"
   *ngIf="product$ | async as products"
 >
   <ng-container *ngFor="let product of products">

@@ -42,12 +42,7 @@
         <li
           class="p-4 border-transparent border-b-2 link-primary border-opacity-0 duration-200 cursor-pointer"
         >
-          <a routerLink="/">Categories</a>
-        </li>
-        <li
-          class="p-4 border-transparent border-b-2 link-primary border-opacity-0 duration-200 cursor-pointer"
-        >
-          <a routerLink="/">Products</a>
+          <a routerLink="/products">Products</a>
         </li>
       </ul>
     </div>
@@ -147,34 +142,29 @@
 <!-- Mobile navigation -->
 <nav class="lg:hidden">
   <div
-    class="h-auto hidden uppercase w-full text-purple-950 absolute z-50"
+    class="h-auto hidden uppercase w-full bg-primary text-white absolute z-50"
     id="menu-mobile"
   >
     <ul class="flex w-full items-center flex-col">
       <li
-        class="w-full p-4 text-center bg-amber-50 hover:bg-amber-100 text-amber-800 border-opacity-0 cursor-pointer active duration-100"
+        class="w-full p-4 text-center hover:text-gray-200 border-opacity-0 cursor-pointer active duration-100"
       >
-        <a routerLink="/">Categories</a>
+        <a routerLink="/">Home</a>
       </li>
       <li
-        class="w-full p-4 text-center bg-amber-50 hover:bg-amber-100 text-amber-800 border-opacity-0 cursor-pointer active duration-100"
+        class="w-full p-4 text-center hover:text-gray-200 border-opacity-0 cursor-pointer active duration-100"
       >
-        <a routerLink="/">Products</a>
+        <a routerLink="/products">Products</a>
       </li>
       <li
-        class="w-full p-4 text-center bg-amber-50 hover:bg-amber-100 text-amber-800 border-opacity-0 cursor-pointer active duration-100"
+        class="w-full p-4 text-center hover:text-gray-200 border-opacity-0 cursor-pointer active duration-100"
       >
-        <a routerLink="/">Collections</a>
+        <a routerLink="/"><i class="fa-solid fa-user"></i> My profile</a>
       </li>
       <li
-        class="w-full p-4 text-center bg-amber-50 hover:bg-amber-100 text-amber-800 border-opacity-0 cursor-pointer active duration-100"
+        class="w-full p-4 text-center hover:text-gray-200 border-opacity-0 cursor-pointer active duration-100"
       >
-        <a routerLink="/"><i class="fa-solid fa-user"></i></a>
-      </li>
-      <li
-        class="w-full p-4 text-center bg-amber-50 hover:bg-amber-100 text-amber-800 border-opacity-0 cursor-pointer active duration-100"
-      >
-        <a routerLink="/"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a routerLink="/"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
       </li>
     </ul>
   </div>

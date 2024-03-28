@@ -17,11 +17,12 @@ export class ProductSliderComponent implements OnInit {
   product$: Observable<Product[]> | null = null;
   @ViewChild("carousel") carouselContainer!: ElementRef; // Refer to the carousel container
   @Input() scrollSpeed: number = 5000;
+  @Input() TotalProductsFetched: number;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.product$ = this.productService.getProducts(10); // (param = nb of products displayed, if "0" fetch all products)
+    this.product$ = this.productService.getProducts(this.TotalProductsFetched); // (param = nb of products displayed, if "0" fetch all products)
     this.autoScroll();
   }
 
