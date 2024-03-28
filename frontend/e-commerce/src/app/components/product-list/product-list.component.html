@@ -1,5 +1,11 @@
 <ng-container *ngIf="product$ | async as products">
-  <div *ngFor="let product of products" class="flex-auto">
+  <div
+    *ngFor="
+      let product of products
+        | paginate : { itemsPerPage: itemsPerPage, currentPage: currentPage }
+    "
+    class="flex-auto"
+  >
     <div class="justify-center mb-12 md:mx-20 lg:mb-15">
       <div
         class="card rounded-none md:rounded-xl lg:card-side bg-base-100 shadow-xl"
@@ -37,4 +43,8 @@
       </div>
     </div>
   </div>
+  <pagination-controls
+    (pageChange)="currentPage = $event"
+    class="flex justify-center mt-14"
+  ></pagination-controls>
 </ng-container>
