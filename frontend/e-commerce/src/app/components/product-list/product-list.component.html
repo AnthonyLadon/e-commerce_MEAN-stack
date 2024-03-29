@@ -4,16 +4,16 @@
       let product of products
         | paginate : { itemsPerPage: itemsPerPage, currentPage: currentPage }
     "
-    class="flex-auto"
+    class="flex-auto flex-row mt-16"
   >
-    <div class="justify-center mb-12 md:mx-20 lg:mb-15">
+    <div class="justify-center mb-12 md:mx-20 lg:mb-15 lg:w-2/3 lg:mx-auto">
       <div
-        class="card rounded-none md:rounded-xl lg:card-side bg-base-100 shadow-xl"
+        class="card rounded-none md:rounded-xl lg:card-side bg-base-100 shadow-lg lg:hover:shadow-xl"
       >
-        <figure class="w-auto">
+        <figure class="w-full h-80 bg-white">
           <img
-            [src]="product.images[0]"
-            class="w-full h-full"
+            [src]="product.image"
+            class="object-cover"
             alt="{{ product.title }}"
           />
         </figure>

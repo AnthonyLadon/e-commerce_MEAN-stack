@@ -28,6 +28,9 @@ export class ProductSliderComponent implements OnInit {
 
   autoScroll(): void {
     setInterval(() => {
+      if (!this.carouselContainer) {
+        return;
+      }
       const carouselContainer = this.carouselContainer.nativeElement;
 
       // Total width of the carousel

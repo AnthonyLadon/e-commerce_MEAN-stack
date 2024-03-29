@@ -1,12 +1,23 @@
 <div *ngIf="product">
-  <ng-container *ngIf="product.images">
-    <h1>{{ product.title }}</h1>
-    <p>Category: {{ product.category.name }}</p>
-    <p>{{ product.description }}</p>
-    <p>Added on {{ product.creationAt | date }}</p>
-    <p>{{ product.price | currency }}</p>
-    <div *ngFor="let img of product.images" class="wrapper">
-      <img [src]="img" [alt]="product.title" class="w-full" />
+  <ng-container *ngIf="product.image">
+    <div
+      class="card bg-gradient-to-tr from-amber-50 to-slate-100 mx-4 mt-8 md:mx-12 lg:mx-4"
+    >
+      <figure class="px-10 pt-10">
+        <img
+          [src]="product.image"
+          [alt]="product.title"
+          class="w-auto object-contain max-h-96 rounded-box drop-shadow-sm"
+        />
+      </figure>
+      <div class="card-body items-center">
+        <h1 class="card-title text-3xl mb-2">{{ product.title }}</h1>
+        <p class="lg:px-20">{{ product.description }}</p>
+        <p class="text-xl mb-2">{{ product.price | currency }}</p>
+        <div class="card-actions">
+          <button class="btn btn-primary">Add to cart</button>
+        </div>
+      </div>
     </div>
   </ng-container>
 </div>
