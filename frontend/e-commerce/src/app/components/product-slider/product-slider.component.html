@@ -1,4 +1,7 @@
 <h2 class="text-center font-semibold p-4 text-3xl">Our last Arrivals</h2>
+<div *ngIf="spinner$ | async" class="flex justify-center">
+  <span class="loading loading-spinner text-accent p-6"></span>
+</div>
 <div
   #carousel
   class="carousel p-4 mx-2 space-x-4 rounded-box h-96"
@@ -30,6 +33,7 @@
       <ng-template #noImage>
         <img
           src="../../../assets/images/default-image.jpeg"
+          class="rounded-xl object-cover h-full w-72"
           alt="product default image"
       /></ng-template>
     </div>

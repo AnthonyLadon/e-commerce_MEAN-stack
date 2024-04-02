@@ -19,11 +19,13 @@ export class ProductListComponent implements OnInit {
   @Input() TotalProductsFetched: number;
   itemsPerPage: number = 10;
   currentPage: number = 1; // default page
+  spinner$: Observable<boolean> | null = null; // Spinner observable
 
   constructor(private productService: ProductService) {}
 
   // fetch all products (param = nb of products displayed)
   ngOnInit() {
     this.product$ = this.productService.getProducts(this.TotalProductsFetched);
+    this.spinner$ = this.productService.spinner$; // Spinner observable from the service
   }
 }

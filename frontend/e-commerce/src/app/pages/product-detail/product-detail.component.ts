@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { Product } from "../../types/product";
 import { ProductService } from "../../services/product.service";
 import { ActivatedRoute } from "@angular/router";
+import { OnInit } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-product-detail",
@@ -11,9 +13,10 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: "./product-detail.component.html",
   styleUrl: "./product-detail.component.css",
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit {
   productId: number;
   product: Product;
+  spinner$: Observable<boolean> | null = null; // Spinner observable
 
   constructor(
     private productService: ProductService,
@@ -26,5 +29,6 @@ export class ProductDetailComponent {
     this.productService.getProductById(this.productId).subscribe((product) => {
       this.product = product;
     });
+    this.spinner$ = this.productService.spinner$; // Spinner observable from the service
   }
 }

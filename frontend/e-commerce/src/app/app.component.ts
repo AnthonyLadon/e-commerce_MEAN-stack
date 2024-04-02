@@ -11,5 +11,5 @@ import { FooterComponent } from "./shared/footer/footer.component";
   styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  title = "e-commerce";
+  title = "Easy Shopping";
 }
