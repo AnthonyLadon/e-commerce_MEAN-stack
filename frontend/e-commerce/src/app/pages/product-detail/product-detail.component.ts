@@ -1,9 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Product } from "../../types/product";
 import { ProductService } from "../../services/product.service";
 import { ActivatedRoute } from "@angular/router";
-import { OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
 @Component({
