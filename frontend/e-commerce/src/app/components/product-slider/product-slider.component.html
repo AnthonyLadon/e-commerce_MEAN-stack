@@ -27,6 +27,7 @@
       <img
         *ngIf="product.image && product.image !== 'undefined'; else noImage"
         [src]="product.image"
+        loading="lazy"
         class="rounded-xl object-cover h-full w-72"
         alt="{{ product.title }}"
       />
