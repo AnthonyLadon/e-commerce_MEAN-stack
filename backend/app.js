@@ -21,11 +21,12 @@ const userRoutes = require("./routes/user.routes");
 
 // Middleware that creates a session object in the request object
 app.use(
-  session(
-    { secret: sessionSecret }, // Secret used to sign the session ID cookie
-    (resave = false), // don't save session if unmodified
-    (saveUninitialized = false) // don't save empty sessions
-  )
+  session({
+    secret: sessionSecret, // Secret used to sign the session ID cookie
+    resave: false, // don't save session if unmodified
+    saveUninitialized: false, // don't save empty sessions
+    cookie: { secure: true }, // cookie settings: secure: true for https
+  })
 );
 
 app.use(express.json()); // parse incoming requests with JSON payloads
@@ -49,6 +50,11 @@ app.use("/users", userRoutes);
 // ****** Error handling ****************************************/
 app.use((req, res) => {
   res.status(404).send("Error 404 - page not found");
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Server internal error");
 });
 
 //******* Listening to port 3000 ******************************/
