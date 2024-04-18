@@ -4,18 +4,15 @@
 require("dotenv").config();
 const sessionSecret = process.env.SESSION_SECRET;
 const port = process.env.PORT || 3000; // port number
-
 const express = require("express");
 const session = require("express-session");
 const path = require("path"); // gives access to the path module
 const app = express(); // call express function to start new Express application
-
-// models imports
-const User = require("./models/User");
-const Product = require("./models/Product");
+const { StatusCodes, getReasonPhrase } = require("http-status-codes");
 
 // routes imports
 const userRoutes = require("./routes/user.routes");
+const productRoutes = require("./routes/product.routes");
 
 // *********** Session ***************************************/
 
@@ -25,11 +22,9 @@ app.use(
     secret: sessionSecret, // Secret used to sign the session ID cookie
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't save empty sessions
-    cookie: { secure: true }, // cookie settings: secure: true for https
+    // cookie: { secure: true }, //! cookie settings: secure: true for https -> disabled in dev environment
   })
 );
-
-app.use(express.json()); // parse incoming requests with JSON payloads
 
 // ********* Mongoose DB connexion ***********************************/
 
@@ -46,15 +41,22 @@ mongoose
 // ******** Routes *********************************************/
 
 app.use("/users", userRoutes);
+app.use("/products", productRoutes);
+app.use(express.json()); // parse incoming requests with JSON payloads
 
 // ****** Error handling ****************************************/
 app.use((req, res) => {
-  res.status(404).send("Error 404 - page not found");
+  res
+    .status(StatusCodes.NOT_FOUND)
+    .send({ error: getReasonPhrase(StatusCodes.NOT_FOUND) });
 });
 
+// error handling for async functions in controllers ("err" comes first to catch errors coming from the catchAsync function)
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Server internal error");
+  console.log(err);
+  res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .send({ error: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR) });
 });
 
 //******* Listening to port 3000 ******************************/

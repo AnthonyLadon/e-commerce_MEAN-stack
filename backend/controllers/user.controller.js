@@ -1,5 +1,7 @@
+const mongoose = require("mongoose");
 const User = require("../models/User");
-const catchAsync = require("../helpers/catchAsync"); // import the catchAsync -> error handling function
+const catchAsync = require("../helpers/catchAsync"); // error handling function
+const { StatusCodes, getReasonPhrase } = require("http-status-codes");
 
 // ***** CREATE *********************/
 
@@ -40,7 +42,9 @@ const getOne = catchAsync(async (req, res) => {
   if (user) {
     res.send(user);
   } else {
-    res.status(404).send("User not found");
+    res
+      .status(StatusCodes.NOT_FOUND)
+      .send({ error: getReasonPhrase(StatusCodes.NOT_FOUND) });
   }
 });
 
@@ -48,13 +52,26 @@ const getOne = catchAsync(async (req, res) => {
 
 // finds an user by ID and updates it
 const updateById = catchAsync(async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+  const { id } = req.params; // destructuring id from req.params
+  try {
+    new mongoose.Types.ObjectId(id); // check if the id is a valid ObjectId
+  } catch (error) {
+    console.log(error.message);
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .send({ error: getReasonPhrase(StatusCodes.BAD_REQUEST) });
+    return;
+  }
+
+  const user = await User.findByIdAndUpdate(id, req.body, {
     new: true, // returns the modified document rather than the original
   });
   if (user) {
     res.send(user);
   } else {
-    res.status(404).send("User not found");
+    res
+      .status(StatusCodes.NOT_FOUND)
+      .send({ error: getReasonPhrase(StatusCodes.NOT_FOUND) });
   }
 });
 
@@ -65,7 +82,9 @@ const deleteById = catchAsync(async (req, res) => {
   if (user) {
     res.send(user);
   } else {
-    res.status(404).send("User not found");
+    res
+      .status(StatusCodes.NOT_FOUND)
+      .send({ error: getReasonPhrase(StatusCodes.NOT_FOUND) });
   }
 });
 
