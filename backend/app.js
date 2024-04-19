@@ -12,6 +12,22 @@ const { StatusCodes, getReasonPhrase } = require("http-status-codes");
 const userRoutes = require("./routes/user.routes");
 const productRoutes = require("./routes/product.routes");
 
+// *********** CORS Authorization ********************************/
+
+// Middleware that allows cross-origin requests
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+
 // *********** Session ***************************************/
 
 // Middleware that creates a session object in the request object
@@ -23,6 +39,8 @@ app.use(
     // cookie: { secure: true }, //! cookie settings: secure: true for https -> disabled in dev environment
   })
 );
+
+app.use(express.json()); // parse incoming requests with JSON payloads
 
 // ********* Mongoose DB connexion ***********************************/
 
@@ -40,7 +58,6 @@ mongoose
 
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
-app.use(express.json()); // parse incoming requests with JSON payloads
 
 // ****** Error handling ****************************************/
 app.use((req, res) => {
