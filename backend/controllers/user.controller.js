@@ -3,6 +3,7 @@ const User = require("../models/User");
 const catchAsync = require("../helpers/catchAsync"); // error handling function
 const { StatusCodes, getReasonPhrase } = require("http-status-codes");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // ***** SIGNUP *********************/
 
@@ -56,8 +57,48 @@ const signup = catchAsync((req, res) => {
         .catch((error) => res.status(StatusCodes.BAD_REQUEST).json({ error }));
     })
     .catch((error) =>
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error })
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error.message)
     );
+});
+
+// ***** SIGNIN *********************/
+
+const login = catchAsync(async (req, res) => {
+  // find the user by email
+  User.findOne({ email: req.body.email }).then((user) => {
+    if (!user) {
+      return res
+        .status(StatusCodes.UNAUTHORIZED)
+        .send("User id & password do not match"); // don't give too much info to the user
+    } else {
+      bcrypt
+        .compare(req.body.password, user.password)
+        .then((valid) => {
+          if (!valid) {
+            return res
+              .status(StatusCodes.UNAUTHORIZED)
+              .send("User id & password do not match");
+          } else {
+            res
+              .status(StatusCodes.OK)
+              .send({
+                userId: user._id, // add user id in paylood to identify the user
+                token: jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+                  expiresIn: "24h",
+                }),
+              })
+              .catch((error) => {
+                res
+                  .status(StatusCodes.INTERNAL_SERVER_ERROR)
+                  .send(error.message);
+              });
+          }
+        })
+        .catch((error) =>
+          res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error.message)
+        );
+    }
+  });
 });
 
 // ***** GET *********************/
@@ -95,20 +136,33 @@ const updateById = catchAsync(async (req, res) => {
 
   const data = req.body;
   const emailRegex = /\S+@\S+\.\S+/;
-  if (data.email && !emailRegex.test(data.email)) {
+  // Regex -> At least one uppercase letter, one digit and one special character
+  const passwordRegex =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,20}$/;
+
+  if (!emailRegex.test(data.email)) {
     res.status(StatusCodes.BAD_REQUEST).send("Invalid email format");
     return;
   }
-  if (data.firstName && data.firstName.length < 2) {
+  if (data.firstName.length < 2) {
     res.status(StatusCodes.BAD_REQUEST).send("First name is too short");
     return;
   }
-  if (data.lastName && data.lastName.length < 2) {
+  if (data.lastName.length < 2) {
     res.status(StatusCodes.BAD_REQUEST).send("Last name is too short");
     return;
   }
-  if (data.age && (typeof data.age !== "number" || data.age < 0)) {
+  if (typeof data.age !== "number" || data.age < 0) {
     res.status(StatusCodes.BAD_REQUEST).send("Invalid age value");
+    return;
+  }
+  if (
+    typeof data.password !== "string" ||
+    data.password.length < 8 ||
+    data.password.length > 20 ||
+    !passwordRegex.test(data.password)
+  ) {
+    res.status(StatusCodes.BAD_REQUEST).send("Password is not valid");
     return;
   }
 
@@ -141,6 +195,7 @@ const deleteById = catchAsync(async (req, res) => {
 
 module.exports = {
   signup,
+  login,
   getAll,
   getOne,
   updateById,
