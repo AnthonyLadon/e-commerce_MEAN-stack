@@ -1,9 +1,7 @@
 // ********* Imports *******************************************/
 
-// Load environment variables from .env file
-require("dotenv").config();
+require("dotenv").config(); // Load environment variables from .env file
 const sessionSecret = process.env.SESSION_SECRET;
-const port = process.env.PORT || 3000; // port number
 const express = require("express");
 const session = require("express-session");
 const path = require("path"); // gives access to the path module
@@ -58,6 +56,23 @@ app.use((err, req, res, next) => {
     .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .send({ error: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR) });
 });
+
+// ******* Port ************************************************/
+
+// normalize port number
+const normalizePort = (val) => {
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port;
+  }
+  return false;
+};
+
+const port = normalizePort(process.env.PORT || 3000); // port number
 
 //******* Listening to port 3000 ******************************/
 

@@ -7,13 +7,56 @@ const { StatusCodes } = require("http-status-codes");
 
 const create = catchAsync(async (req, res) => {
   const data = req.body;
+
+  if (data.name.length < 2) {
+    res.status(StatusCodes.BAD_REQUEST).send("Name is too short");
+    return;
+  }
+  if (typeof data.price !== "number" || data.price < 0) {
+    res.status(StatusCodes.BAD_REQUEST).send("Invalid price value");
+    return;
+  }
+  if (data.description.length < 2) {
+    res.status(StatusCodes.BAD_REQUEST).send("Description is too short");
+    return;
+  }
+  if (data.category.length < 2) {
+    res.status(StatusCodes.BAD_REQUEST).send("Category is too short");
+    return;
+  }
+
+  const product = await Product.create({
+    name: data.name,
+    price: data.price,
+    description: data.description,
+    category: data.category,
+  });
+  res.send(product);
 });
 
 // ***** GET *********************/
 
-const getAll = catchAsync(async (req, res) => {});
+const getAll = catchAsync(async (req, res) => {
+  const products = await Product.find();
+  if (products) {
+    res.send(products);
+  } else {
+    res
+      .status(StatusCodes.NOT_FOUND)
+      .send({ error: getReasonPhrase(StatusCodes.NOT_FOUND) });
+  }
+});
 
-const getOne = catchAsync(async (req, res) => {});
+const getOne = catchAsync(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  if (product) {
+    res.send(product);
+  } else {
+    res
+      .status(StatusCodes.NOT_FOUND)
+      .send({ error: getReasonPhrase(StatusCodes.NOT_FOUND) });
+  }
+});
 
 // ***** PATCH *********************/
 
