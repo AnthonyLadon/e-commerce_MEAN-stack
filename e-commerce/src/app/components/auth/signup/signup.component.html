@@ -1,0 +1,55 @@
+<h2>Sign Up</h2>
+
+<form (submit)="submitSignup()">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      type="string"
+      class="form-control"
+      id="firstName"
+      name="firstName"
+      [(ngModel)]="firstName"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      id="email"
+      [(ngModel)]="email"
+      required
+      email
+      #emailInput="ngModel"
+    />
+  </div>
+  <div
+    class="bg-error-content"
+    *ngIf="emailInput.invalid && emailInput.touched"
+  >
+    Please enter a valid email
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+      id="password"
+      [(ngModel)]="password"
+      required
+      password
+      pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:,<.>])(?!.*\s).{8,}$"
+      #passwordInput="ngModel"
+    />
+    <div
+      class="bg-error-content"
+      *ngIf="passwordInput.invalid && passwordInput.touched"
+    >
+      Please enter a valid password
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
