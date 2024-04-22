@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { ProductService } from "../../services/product.service";
 import { RouterLink } from "@angular/router";
 import { ElementRef, ViewChild } from "@angular/core";
+import e from "express";
 
 @Component({
   selector: "app-product-slider",

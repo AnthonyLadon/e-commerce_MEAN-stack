@@ -4,7 +4,7 @@ const { Schema } = mongoose; // destructuring pour extraire le module schema de 
 const productSchema = new Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
-  description: { type: String, required: true },
+  description: { type: String },
   category: { type: String, required: true },
   imageUrl: { type: String, required: true },
   isAvailable: { type: Boolean, default: true },

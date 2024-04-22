@@ -15,17 +15,17 @@
       >
         <figure class="w-full h-80 bg-white">
           <img
-            [src]="product.image"
+            [src]="'assets/images/uploads/' + product.imageUrl"
             loading="lazy"
-            class="object-cover"
-            alt="{{ product.title }}"
+            class="object-cover h-full w-full"
+            alt="{{ product.name }}"
           />
         </figure>
         <div
           class="card-body bg-gray-50 rounded-none md:rounded-b-xl lg:rounded-l-none lg:rounded-r-xl"
         >
           <h2 class="card-title text-primary text-3xl">
-            {{ product.title }}
+            {{ product.name }}
           </h2>
           <p class="line-clamp-3 lg:line-clamp-none text-primary">
             {{ product.description }}
@@ -36,7 +36,7 @@
               {{ product.price | currency }}
             </p>
             <button
-              [routerLink]="'/product' + '/' + product.id"
+              [routerLink]="'/product' + '/' + product._id"
               routerLinkActive="router-link-active"
               class="btn btn-outline"
             >

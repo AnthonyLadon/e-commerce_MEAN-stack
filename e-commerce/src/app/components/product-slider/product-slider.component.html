@@ -17,7 +17,7 @@
           >{{ product.price | currency }}</span
         >
         <span
-          [routerLink]="'/product' + '/' + product.id"
+          [routerLink]="'/product' + '/' + product._id"
           routerLinkActive="router-link-active"
           class="btn btn-xs btn-secondary text-white p-0"
         >
@@ -25,11 +25,14 @@
         </span>
       </div>
       <img
-        *ngIf="product.image && product.image !== 'undefined'; else noImage"
-        [src]="product.image"
+        *ngIf="
+          product.imageUrl && product.imageUrl !== 'undefined';
+          else noImage
+        "
+        [src]="'assets/images/uploads/' + product.imageUrl"
         loading="lazy"
         class="rounded-xl object-cover h-full w-72"
-        alt="{{ product.title }}"
+        alt="{{ product.name }}"
       />
       <ng-template #noImage>
         <img
