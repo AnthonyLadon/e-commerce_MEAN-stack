@@ -7,6 +7,7 @@ const userSchema = new Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   age: { type: Number, min: 0 },
+  status: { type: String, default: "user" },
 });
 
 module.exports = mongoose.model("User", userSchema); // enregistre le modèle User dans la base de données

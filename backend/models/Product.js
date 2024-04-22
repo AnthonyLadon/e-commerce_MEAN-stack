@@ -7,6 +7,10 @@ const productSchema = new Schema({
   description: { type: String, required: true },
   category: { type: String, required: true },
   imageUrl: { type: String, required: true },
+  isAvailable: { type: Boolean, default: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+  inPromotion: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("Product", productSchema); // enregistre le modèle Product dans la DB
