@@ -4,7 +4,7 @@
 /src/app/private.ts
 
 # uploaded files / images
-/src/assets/images
+/src/assets/images/uploads
 
 # Compiled output
 /dist
