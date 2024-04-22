@@ -3,6 +3,9 @@
 # privates files (API keys, etc)
 /src/app/private.ts
 
+# uploaded files / images
+/src/assets/images
+
 # Compiled output
 /dist
 /tmp
