@@ -17,6 +17,6 @@ export class SignupComponent {
   password: string = "";
 
   submitSignup() {
-    console.log("Form submitted", this.email, this.password, this.firstName);
+    console.log("Form submitted", this.firstName, this.email, this.password);
   }
 }
