@@ -26,10 +26,6 @@ const signup = catchAsync((req, res) => {
     res.status(StatusCodes.BAD_REQUEST).send("Last name is too short");
     return;
   }
-  if (typeof data.age !== "number" || data.age < 0) {
-    res.status(StatusCodes.BAD_REQUEST).send("Invalid age value");
-    return;
-  }
   if (
     typeof data.password !== "string" ||
     data.password.length < 8 ||
@@ -43,12 +39,13 @@ const signup = catchAsync((req, res) => {
   bcrypt
     .hash(data.password, 10) // paswword hash + 10 salt rounds
     .then((hash) => {
-      const user = new User.create({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        age: data.age,
+      const user = new User({
+        firstname: data.firstName,
+        lastname: data.lastName,
+        email: data.email,
         password: hash,
       });
+      console.log(user);
       user
         .save() // Push the user to the database
         .then(() =>
@@ -104,6 +101,7 @@ const login = catchAsync(async (req, res) => {
 // ***** GET *********************/
 
 const getAll = catchAsync(async (req, res) => {
+  console.log("GET ALL");
   const users = await User.find();
   res.send(users);
 });

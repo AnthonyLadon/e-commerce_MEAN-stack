@@ -16,7 +16,7 @@ const productRoutes = require("./routes/product.routes");
 
 // Middleware that allows cross-origin requests
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200"); // Allow all origins
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"

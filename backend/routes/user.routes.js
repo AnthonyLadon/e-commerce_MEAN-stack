@@ -3,7 +3,7 @@ const auth = require("../middlewares/auth"); // Before Router -> order of import
 const router = express.Router();
 const userController = require("../controllers/user.controller");
 
-router.post("/signup", auth, userController.signup);
+router.post("/signup", userController.signup);
 router.get("/login", auth, userController.login);
 router.get("/", auth, userController.getAll);
 router.get("/:id", auth, userController.getOne);

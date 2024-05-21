@@ -22,6 +22,26 @@
       <span class="font-medium">Please enter your firstname</span>
     </div>
     <div class="form-group">
+      <label for="lastName" class="label-text text-primary">Last Name</label>
+      <input
+        type="string"
+        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="lastName"
+        required
+        pattern="^[a-zA-Z]{2,}$"
+        #lastNameInput="ngModel"
+      />
+    </div>
+    <div
+      role="alert"
+      class="p-4 mt-1 text-sm rounded-lg bg-red-100 text-red-700"
+      *ngIf="lastNameInput.invalid && lastNameInput.touched"
+    >
+      <span class="font-medium">Please enter your lastname</span>
+    </div>
+    <div class="form-group">
       <label for="email" class="label-text text-primary">Email</label>
       <input
         type="email"
@@ -50,7 +70,7 @@
         id="password"
         [(ngModel)]="password"
         required
-        pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:,<.>])(?!.*\s).{8,}$"
+        pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,.>])(?!.*\s).{8,}$"
         #passwordInput="ngModel"
       />
       <div
