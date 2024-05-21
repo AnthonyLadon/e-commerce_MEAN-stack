@@ -45,7 +45,6 @@ const signup = catchAsync((req, res) => {
         email: data.email,
         password: hash,
       });
-      console.log(user);
       user
         .save() // Push the user to the database
         .then(() =>

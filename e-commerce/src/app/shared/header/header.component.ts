@@ -1,14 +1,17 @@
 import { Component, OnInit } from "@angular/core";
+import { NgIf } from "@angular/common";
 import { RouterLink, Router, NavigationStart } from "@angular/router";
 
 @Component({
   selector: "app-header",
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgIf],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.css",
 })
 export class HeaderComponent implements OnInit {
+  isLogged: boolean = false;
+
   constructor(private router: Router) {}
 
   ToggleMenu() {
@@ -24,5 +27,11 @@ export class HeaderComponent implements OnInit {
         menu.classList.add("hidden");
       }
     });
+
+    // check if user is logged in
+    let user = localStorage.getItem("user");
+    if (user) {
+      this.isLogged = true;
+    }
   }
 }

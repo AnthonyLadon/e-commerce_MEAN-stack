@@ -12,9 +12,6 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   signup(firstName: string, lastName: string, email: string, password: string) {
-    console.log(
-      "user service angular" + firstName + lastName + email + password
-    );
     return this.http
       .post(`${this.apiUrl}/users/signup`, {
         firstName,

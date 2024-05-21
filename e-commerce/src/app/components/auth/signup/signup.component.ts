@@ -19,6 +19,10 @@ export class SignupComponent {
   password: string = "";
 
   submitSignup() {
+    if (!this.firstName || !this.lastName || !this.email || !this.password) {
+      console.error("Missing one or several required form fields");
+      return;
+    }
     this.userService
       .signup(this.firstName, this.lastName, this.email, this.password)
       .subscribe(
