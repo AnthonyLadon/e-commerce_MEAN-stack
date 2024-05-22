@@ -44,15 +44,14 @@ app.use(express.json()); // parse incoming requests with JSON payloads
 
 // ********* Mongoose DB connexion ***********************************/
 
+const mongodbCredendials = process.env.MONGODB_CREDENTIALS;
+
 const mongoose = require("mongoose");
 mongoose
-  .connect(
-    "mongodb+srv://ladonanthony:4ApwmSyhBqVmxH6P@cluster0.vfu3h9q.mongodb.net/easyshopping?retryWrites=true&w=majority&appName=Cluster0",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(mongodbCredendials, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Succesfully connected to MongoDB"))
   .catch(() => console.log("Connection to MongoDB failed !", error));
 
