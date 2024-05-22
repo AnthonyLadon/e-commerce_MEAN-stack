@@ -16,7 +16,7 @@ const productRoutes = require("./routes/product.routes");
 
 // Middleware that allows cross-origin requests
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200"); // Allow all origins
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
@@ -45,14 +45,16 @@ app.use(express.json()); // parse incoming requests with JSON payloads
 // ********* Mongoose DB connexion ***********************************/
 
 const mongoose = require("mongoose");
-
 mongoose
-  .connect("mongodb://localhost:27017/easyshopping", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://ladonanthony:4ApwmSyhBqVmxH6P@cluster0.vfu3h9q.mongodb.net/easyshopping?retryWrites=true&w=majority&appName=Cluster0",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log("Succesfully connected to MongoDB"))
-  .catch(() => console.log("Connection to MongoDB failed !"));
+  .catch(() => console.log("Connection to MongoDB failed !", error));
 
 // ******** Routes *********************************************/
 

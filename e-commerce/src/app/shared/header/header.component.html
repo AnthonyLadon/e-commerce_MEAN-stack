@@ -113,7 +113,7 @@
         >
           <a routerLink="/products">Products</a>
         </li>
-        <li><a routerLink="/signup">Signup</a></li>
+        <li *ngIf="!isLogged"><a routerLink="/signup">Signup</a></li>
       </ul>
     </div>
     <div class="flex-none">
@@ -152,7 +152,7 @@
           </div>
         </div>
       </div>
-      <div class="dropdown dropdown-end mt-1 px-2">
+      <div class="dropdown dropdown-end mt-1 px-2" *ngIf="isLogged">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
           <div
             class="w-12 h-12 rounded-full border border-primary hover:border-accent bg-gradient-to-tl from-gray-300 to-gray-50"

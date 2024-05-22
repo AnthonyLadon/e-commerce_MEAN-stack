@@ -1,5 +1,5 @@
 <h2 class="text-2xl text-center">Sign Up</h2>
-<div class="wrapper max-w-xl mx-auto my-10">
+<div class="wrapper max-w-xl mx-auto my-10 px-4">
   <form (submit)="submitSignup()" class="form-control">
     <div
       role="alert"
@@ -91,4 +91,10 @@
       Sign Up
     </button>
   </form>
+  <p class="mt-8">
+    Already registrated?
+    <a routerLink="/signin" class="text-secondary link-hover cursor-pointer"
+      >Sign in</a
+    >
+  </p>
 </div>
